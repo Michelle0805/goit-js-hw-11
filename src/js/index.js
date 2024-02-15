@@ -193,7 +193,7 @@ function renderGallery(hits) {
   //   If the user has reached the end of the collection
   if (options.params.page * options.params.per_page >= totalHits) {
     if (!reachedEnd) {
-      Notiflix.Notify.info("We're sorry, but you've reached the end of search results.");
+      Notify.info("We're sorry, but you've reached the end of search results.");
       reachedEnd = true;
     }
   }
@@ -214,22 +214,25 @@ async function handleSubmit(e) {
   try {
     const response = await axios.get(BASE_URL, options);
     totalHits = response.data.totalHits;
-
+   
     const { hits } = response.data;
     console.log(hits);
-
+   
     if (hits.length === 0) {
-      Notiflix.Notify.failure(
+      Notify.failure(
         'Sorry, there are no images matching your search query. Please try again.'
       );
     } else {
-      Notiflix.Notify.success(`Hooray! We found ${totalHits} images.`);
+      Notify.success(`Hooray! We found ${totalHits} images.`);
       renderGallery(hits);
     }
+    
     searchInputEl.value = '';
+    
   } catch (err) {
     Notify.failure(err);
   }
+ 
 }
 
 searchFormEl.addEventListener('submit', handleSubmit);

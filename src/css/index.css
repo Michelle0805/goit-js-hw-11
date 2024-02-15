@@ -17,7 +17,7 @@ img {
     display: block;
     width: 270px;
     height: 150px;
-    object-fit: cover;
+    object-fit: fill;
 }
 
 .section {
@@ -71,8 +71,8 @@ img {
     justify-content: center;
     align-items: center;
     text-align: center;
-    gap:35px;
-    /* justify-content: space-between; */
+    /* gap:35px; */
+    justify-content: space-between;
     background-color: #173b55;
     color: #ddd;
     border-radius: 0px 0px 5px 5px;
